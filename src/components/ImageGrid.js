@@ -5,9 +5,12 @@ import './ImageGrid.css'
 const ImageGrid = props => {
     return (
         <div className="image-grid">
-            {props.images.map(img => (<div>
-                    <img src={img.url} />
-            </div>))}
+            {props.images.map(img => (<div style={{
+                backgroundImage: `url("${img.url}")`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat'
+            }}></div>))}
         </div>
     );
 };
