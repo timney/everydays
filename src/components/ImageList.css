@@ -1,3 +1,14 @@
 .image-list > img{
     margin: 20px 0 20px 0;
 }
+
+.image-thumb {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 5px;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    border-radius: 3px;
+}

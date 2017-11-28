@@ -5,6 +5,13 @@ import './App.css';
 import ImageList from './components/ImageList'
 import ImageGrid from './components/ImageGrid'
 import Show from './components/Show';
+
+const parseDates = img => {
+  return { ...img, date: new Date(img.date) }
+};
+
+const sortByNewest = (a, b) => b.date - a.date;
+
 class App extends Component {
 
   constructor(props){
@@ -12,18 +19,18 @@ class App extends Component {
     this.state = {
       images: [],
       show: false,
-      showImg: {}
+      imgIndex: null,
     }
   }
   
   componentWillMount() {
     fetch('https://6juq6295f5.execute-api.eu-west-1.amazonaws.com/test')
       .then(res => res.json())
-      .then(data => this.setState({ images: data }))
+      .then(data => this.setState({ images: data.map(parseDates).sort(sortByNewest) }))
   }
 
-  show(url) {
-    this.setState({ show: true, showImg: url })
+  show(imgIndex) {
+    this.setState({ show: true, imgIndex })
   }
 
   render() {
@@ -38,8 +45,11 @@ class App extends Component {
         </Row>
         <Row>
           <Col md={{ size: 6, offset: 3 }}>
-            <ImageList images={this.state.images} show={e => this.show(e)} />
-            <Show img={this.state.showImg} onClose={() => this.setState({ show: false, showImg: {} })} />
+            <ImageList images={this.state.images} show={i => this.show(i)} />
+            <Show 
+              images={this.state.images}
+              imgIndex={this.state.imgIndex} 
+              onClose={() => this.setState({ show: false, imgIndex: null })} />
           </Col>
         </Row>
       </Container>

@@ -4,7 +4,10 @@ import './Image.css'
 
 const Image = props => {
     return (
-        <img src={"http://via.placeholder.com/700x500"} className="ed-img" />
+        <img src={props.img} 
+            className="ed-img" 
+            alt={props.alt}
+            onClick={props.onClick} />
     );
 };
 
