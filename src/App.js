@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'reactstrap'
 import './App.css';
 
 import ImageList from './components/ImageList'
-import ImageGrid from './components/ImageGrid'
 import Show from './components/Show';
 
 const parseDates = img => {
@@ -40,8 +39,10 @@ class App extends Component {
           <Col md={{ offset: 3 }}>
             <header className="App-header">
               <h1 className="App-title">Everydays</h1>
+              <h5>by <a href="https://twitter.com/timney">@timney</a></h5>
               {this.state.images.length === 0 && <h3>...just not today</h3>}
             </header>
+            <hr />
           </Col>
         </Row>
         <Row>
