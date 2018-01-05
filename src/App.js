@@ -40,6 +40,7 @@ class App extends Component {
           <Col md={{ offset: 3 }}>
             <header className="App-header">
               <h1 className="App-title">Everydays</h1>
+              {this.state.images.length === 0 && <h3>...just not today</h3>}
             </header>
           </Col>
         </Row>
